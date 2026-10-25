@@ -42,7 +42,7 @@
                 <button id="btn-imprimir" class="boton-action btn-impresion">🖨️ Imprimir Catálogo</button>
             </div>
 
-            <!-- BOTONERA DE FILTROS RÁPIDOS POR VALORACIÓN -->
+            <!-- Botonera de Filtros Rápidos -->
             <div class="contenedor-filtros-rapidos">
                 <button class="btn-filtro activo" data-filtro="todos">Todos</button>
                 <button class="btn-filtro" data-filtro="Patrimonio Histórico (Exhibición)">Patrimonio</button>
@@ -54,13 +54,13 @@
             <div id="grid-dinamico" class="grid-artesania"></div>
         </section>
 
-        <!-- Formulario de Registro Avanzado -->
+        <!-- Formulario de Registro con Carga de Fotos Reales -->
         <section id="registro" class="seccion-formulario">
             <div id="contenedor-formulario-box" class="formulario-contenedor">
                 <h2>Registra tu Obra al Instante</h2>
-                <p>Completa los datos y mira cómo tu arte se añade automáticamente a la galería superior.</p>
+                <p>Completa los datos, sube tu foto real y conéctate con compradores de todo el mundo.</p>
                 
-                <form id="form-artesano" novalidate> <!-- Desactivamos validación nativa para controlarla por JS con el efecto de error -->
+                <form id="form-artesano" novalidate>
                     <div class="grupo-campo">
                         <label for="nombre">Nombre del Creador:</label>
                         <input type="text" id="nombre" required placeholder="Ej. Alirio Segovia">
@@ -81,8 +81,9 @@
                     </div>
 
                     <div class="grupo-campo">
-                        <label for="telefono">Teléfono de Contacto:</label>
-                        <input type="tel" id="telefono" required placeholder="Ej. 0412-1234567">
+                        <label for="telefono">WhatsApp de Contacto (Formato Internacional):</label>
+                        <input type="tel" id="telefono" required placeholder="Ej. 584121234567" title="Ingresa solo números iniciando con el código de país (58 para Venezuela). Sin guiones ni espacios.">
+                        <small>Importante: Incluye el 58 adelante para habilitar el botón de compra (Ej: 584147654321).</small>
                         <small class="error-input" id="error-tel-msg"></small>
                     </div>
 
@@ -102,12 +103,25 @@
                         </select>
                     </div>
 
+                    
+                    
+                    
+                   <!-- Busca en tu index.html el campo "foto-archivo" y reemplázalo por este bloque: -->
+<div class="grupo-campo">
+    <label for="foto-url-input">Enlace (URL) de la Foto de la Artesanía:</label>
+    <input type="url" id="foto-url-input" required placeholder="Ej. https://imgur.com">
+    <small>Puedes subir la foto gratis en sitios como <a href="https://postimages.org" target="_blank" style="color:var(--color-principal); font-weight:bold;">Postimages</a> o Imgur y pegar el "Enlace directo" aquí.</small>
+</div>
+ 
+                    
+   
+
                     <div class="grupo-campo">
                         <label for="descripcion">Breve Descripción:</label>
                         <input type="text" id="descripcion" required placeholder="Ej. Modelado tradicional con arcilla de Camay">
                     </div>
 
-                    <button type="submit" class="boton-enviar">Publicar en la Vitrina</button>
+                    <button type="submit" class="boton-enviar" id="btn-submit-texto">Publicar en la Nube</button>
                 </form>
             </div>
         </section>
@@ -120,25 +134,16 @@
                 <a href="#">Instagram</a>
                 <a href="#">WhatsApp</a>
             </div>
-        </div>
-    </footer>
-
-
-    <footer>
-        <div class="footer-contenido">
-            <p>&copy; 2026 Axagua - Patrimonio Larense.</p>
-            <div class="redes-sociales">
-                <a href="#">Instagram</a>
-                <a href="#">WhatsApp</a>
-            </div>
-            <!-- BOTÓN SECRETO DE CONTROL DE FÁBRICA -->
             <button id="btn-restaurar-secreto" class="btn-secreto-admin" title="Área de administración">⚙️ Mantenimiento</button>
         </div>
     </footer>
 
+    <!-- LIBRERÍAS DE FIREBASE (Versión 8 SDK para integración rápida y estable mediante CDN) -->
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
 
-    
-
+    <!-- Nuestro Script Controlador -->
     <script src="script.js"></script>
 </body>
 </html>
