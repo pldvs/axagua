@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axagua | Vitrina de Arte Torrense</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">AXAGUA</div>
+        <nav>
+            <a href="historia.html">El Origen</a>
+            <a href="#galeria">Vitrina Digital</a>
+            <a href="#registro">Unirse como Creador</a>
+            <button id="btn-tema" class="btn-utilitario">🌙 Modo Oscuro</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Bienvenidos a Axagua</h1>
+            <p>El epicentro digital de la artesanía y el arte del Municipio Torres, Estado Lara.</p>
+            <a href="#galeria" class="boton-action">Ver Exposición</a>
+        </section>
+
+        <!-- Panel de Estadísticas -->
+        <section class="contenedor-estadisticas">
+            <div class="contenedor">
+                <h3 class="titulo-estadisticas">Distribución por Parroquias Torrenses</h3>
+                <div id="panel-contadores" class="grid-contadores"></div>
+            </div>
+        </section>
+
+        <!-- Galería Dinámica -->
+        <section id="galeria" class="contenedor">
+            <h2>Vitrina Cultural Activa</h2>
+            
+            <div class="contenedor-herramientas-galeria">
+                <input type="text" id="buscador" placeholder="🔍 Busca por parroquia, artista o artesanía...">
+                <button id="btn-imprimir" class="boton-action btn-impresion">🖨️ Imprimir Catálogo</button>
+            </div>
+
+            <!-- BOTONERA DE FILTROS RÁPIDOS POR VALORACIÓN -->
+            <div class="contenedor-filtros-rapidos">
+                <button class="btn-filtro activo" data-filtro="todos">Todos</button>
+                <button class="btn-filtro" data-filtro="Patrimonio Histórico (Exhibición)">Patrimonio</button>
+                <button class="btn-filtro" data-filtro="Pieza Única de Colección">Colección</button>
+                <button class="btn-filtro" data-filtro="Accesible / Uso Diario">Uso Diario</button>
+                <button class="btn-filtro" data-filtro="Intercambio / Trueque Comunitario">Trueque</button>
+            </div>
+            
+            <div id="grid-dinamico" class="grid-artesania"></div>
+        </section>
+
+        <!-- Formulario de Registro Avanzado -->
+        <section id="registro" class="seccion-formulario">
+            <div id="contenedor-formulario-box" class="formulario-contenedor">
+                <h2>Registra tu Obra al Instante</h2>
+                <p>Completa los datos y mira cómo tu arte se añade automáticamente a la galería superior.</p>
+                
+                <form id="form-artesano" novalidate> <!-- Desactivamos validación nativa para controlarla por JS con el efecto de error -->
+                    <div class="grupo-campo">
+                        <label for="nombre">Nombre del Creador:</label>
+                        <input type="text" id="nombre" required placeholder="Ej. Alirio Segovia">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="parroquia">Parroquia de Torres:</label>
+                        <select id="parroquia" required>
+                            <option value="">Selecciona tu ubicación...</option>
+                            <option value="Trinidad Samuel">Trinidad Samuel (Carora)</option>
+                            <option value="Antonio Díaz">Antonio Díaz (Curarigua)</option>
+                            <option value="Camacaro">Camacaro (Río Tocuyo)</option>
+                            <option value="Chiquinquirá">Chiquinquirá (Aregue)</option>
+                            <option value="Altagracia">Altagracia</option>
+                            <option value="Manuel Morillo">Manuel Morillo (El Pino)</option>
+                            <option value="Lara">Lara (San Pedro)</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="telefono">Teléfono de Contacto:</label>
+                        <input type="tel" id="telefono" required placeholder="Ej. 0412-1234567">
+                        <small class="error-input" id="error-tel-msg"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="tipo">Tipo de Obra:</label>
+                        <input type="text" id="tipo" required placeholder="Ej. Cerámica de Barro, Tejido, Óleo">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="valoracion">Valoración Cultural / Precio Estimado:</label>
+                        <select id="valoracion" required>
+                            <option value="">Selecciona una escala de valor...</option>
+                            <option value="Patrimonio Histórico (Exhibición)">Patrimonio Histórico (Solo Exhibición)</option>
+                            <option value="Pieza Única de Colección">Pieza Única de Colección</option>
+                            <option value="Accesible / Uso Diario">Accesible / Uso Diario</option>
+                            <option value="Intercambio / Trueque Comunitario">Intercambio / Trueque Comunitario</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="descripcion">Breve Descripción:</label>
+                        <input type="text" id="descripcion" required placeholder="Ej. Modelado tradicional con arcilla de Camay">
+                    </div>
+
+                    <button type="submit" class="boton-enviar">Publicar en la Vitrina</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-contenido">
+            <p>&copy; 2026 Axagua - Patrimonio Larense.</p>
+            <div class="redes-sociales">
+                <a href="#">Instagram</a>
+                <a href="#">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <footer>
+        <div class="footer-contenido">
+            <p>&copy; 2026 Axagua - Patrimonio Larense.</p>
+            <div class="redes-sociales">
+                <a href="#">Instagram</a>
+                <a href="#">WhatsApp</a>
+            </div>
+            <!-- BOTÓN SECRETO DE CONTROL DE FÁBRICA -->
+            <button id="btn-restaurar-secreto" class="btn-secreto-admin" title="Área de administración">⚙️ Mantenimiento</button>
+        </div>
+    </footer>
+
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

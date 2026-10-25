@@ -1,0 +1,114 @@
+:root {
+    --color-principal: #8B4513;    
+    --color-oscuro: #3E2723;       
+    --color-fondo: #FDFBF7;        
+    --color-crema: #F5E6D3;        
+    --texto: #2C2520;
+    --tarjetas-bg: #FFFFFF;
+    --color-alerta: #d32f2f;
+    --tag-valor: #2e7d32;
+}
+
+[data-theme="dark"] {
+    --color-principal: #D2691E;    
+    --color-oscuro: #1A0F0D;       
+    --color-fondo: #251815;        
+    --color-crema: #3E2723;        
+    --texto: #F5E6D3;              
+    --tarjetas-bg: #2F1E1B;
+    --color-alerta: #ff5252;
+    --tag-valor: #81c784;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: var(--color-fondo); color: var(--texto); transition: background-color 0.3s, color 0.3s; }
+
+header { background-color: var(--color-principal); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.logo { color: white; font-size: 24px; font-weight: bold; letter-spacing: 2px; }
+nav a { color: #FFFFFF; text-decoration: none; margin-left: 20px; font-weight: 500; }
+
+.btn-utilitario { background-color: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-left: 15px; }
+
+.hero { background-color: var(--color-crema); text-align: center; padding: 80px 20px; }
+.hero h1 { color: white; background-color: var(--color-principal); display: inline-block; padding: 5px 20px; border-radius: 4px; font-size: 42px; }
+.boton-action { display: inline-block; background-color: var(--color-principal); color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; margin-top: 15px; border: none; cursor: pointer; }
+
+section { padding: 40px 20px; }
+h2 { color: var(--color-principal); text-align: center; font-size: 32px; }
+
+.contenedor-herramientas-galeria { max-width: 800px; margin: 0 auto 20px auto; display: flex; gap: 15px; }
+#buscador { flex-grow: 1; padding: 14px 20px; border: 2px solid var(--color-crema); border-radius: 30px; font-size: 16px; background-color: var(--tarjetas-bg); color: var(--texto); outline: none; }
+.btn-impresion { margin-top: 0; white-space: nowrap; }
+
+/* Estilos de la Botonera de Filtros Rápidos */
+.contenedor-filtros-rapidos { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.btn-filtro { background-color: var(--tarjetas-bg); color: var(--texto); border: 1px solid var(--color-crema); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; }
+.btn-filtro:hover { border-color: var(--color-principal); }
+.btn-filtro.activo { background-color: var(--color-principal); color: white; border-color: var(--color-principal); }
+
+.contenedor-estadisticas { background-color: var(--color-crema); padding: 25px 20px; }
+.titulo-estadisticas { margin: 0 0 15px 0; text-align: center; }
+.grid-contadores { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+.badge-contador { background-color: var(--tarjetas-bg); padding: 8px 16px; border-radius: 20px; font-size: 14px; border: 1px solid var(--color-principal); }
+
+.contenedor { max-width: 1200px; margin: 0 auto; }
+.grid-artesania { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.tarjeta-obra { background: var(--tarjetas-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); animation: aparecer 0.4s ease-out; }
+.info-obra { padding: 20px; }
+.info-obra h3 { margin: 0 0 5px 0; color: var(--color-principal); }
+.contenedor-tags { display: flex; gap: 8px; margin-bottom: 12px; }
+.tag-parroquia { background-color: var(--color-crema); color: var(--texto); font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+.tag-valoracion { background-color: transparent; border: 1px solid var(--tag-valor); color: var(--tag-valor); font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: bold; }
+
+.boton-eliminar { background-color: transparent; color: var(--color-alerta); border: 1px solid var(--color-alerta); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 15px; }
+
+.seccion-formulario { background-color: var(--color-crema); }
+.formulario-contenedor { max-width: 500px; margin: 0 auto; background: var(--tarjetas-bg); padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: background-color 0.3s; }
+.grupo-campo { margin-bottom: 20px; }
+.grupo-campo label { display: block; margin-bottom: 8px; font-weight: 600; }
+.grupo-campo input, .grupo-campo select { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 6px; box-sizing: border-box; background-color: var(--tarjetas-bg); color: var(--texto); }
+.error-input { color: var(--color-alerta); font-size: 12px; display: block; margin-top: 5px; font-weight: bold; }
+
+.boton-enviar { background-color: var(--color-principal); color: white; border: none; padding: 14px; width: 100%; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+
+footer { background-color: var(--color-oscuro); color: white; text-align: center; padding: 30px 20px; }
+
+@keyframes aparecer { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ANIMACIÓN DE ERROR PARPADEANTE Y SACUDIDA (Shaking) */
+.formulario-error-shaking {
+    animation: vibrarParpadear 0.4s linear;
+    border: 2px solid var(--color-alerta) !important;
+}
+
+@keyframes vibrarParpadear {
+    0% { transform: translateX(0); background-color: rgba(211, 47, 47, 0.05); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); background-color: rgba(211, 47, 47, 0.1); }
+    63% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); background-color: rgba(211, 47, 47, 0.05); }
+    100% { transform: translateX(0); background-color: var(--tarjetas-bg); }
+}
+
+@media print {
+    header, .hero, .contenedor-estadisticas, .contenedor-herramientas-galeria, .contenedor-filtros-rapidos, .seccion-formulario, footer, .boton-eliminar { display: none !important; }
+    .tarjeta-obra { border: 1px solid #333 !important; page-break-inside: avoid; margin-bottom: 20px; background: #FFF !important; }
+}
+
+.btn-secreto-admin {
+    background: transparent;
+    color: var(--color-crema);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    opacity: 0.5;
+    transition: opacity 0.3s, border-color 0.3s;
+}
+.btn-secreto-admin:hover {
+    opacity: 1;
+    border-color: var(--color-principal);
+    background-color: rgba(255, 255, 255, 0.05);
+}
