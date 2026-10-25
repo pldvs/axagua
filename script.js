@@ -40,92 +40,40 @@ const app = initializeApp(firebaseConfig);
     
     
     
+
+
+
     
     
-    // Instanciamos los servicios en la nube
-     //const db = firebase.firestore();
-    // const storage = firebase.storage();
+    Instanciamos los servicios en la nube
+     const db = firebase.firestore();
+    const storage = firebase.storage();
 
-     //let baseDeDatos = []; // Se poblará en tiempo real desde Firestore
-     //let filtroValoracionActivo = "todos";
+     let baseDeDatos = []; // Se poblará en tiempo real desde Firestore
+     let filtroValoracionActivo = "todos";
 
-     //const gridDinamico = document.getElementById('grid-dinamico');
-     //const formulario = document.getElementById('form-artesano');
-    
-    
-    
-        // 5. PROCESAMIENTO DE SUBIDA DIRECTO A FIRESTORE (SIN STORAGE / SIN TARJETA)
-    if (formulario) {
-        formulario.addEventListener('submit', (evento) => {
-            evento.preventDefault();
-
-            const creador = document.getElementById('nombre').value.trim();
-            const parroquia = document.getElementById('parroquia').value;
-            const telefono = inputTelefono.value.trim();
-            const tipo = document.getElementById('tipo').value.trim();
-            const valoracion = document.getElementById('valoracion').value;
-            const descripcion = document.getElementById('descripcion').value.trim();
-            const fotoUrlInput = document.getElementById('foto-url-input').value.trim(); // Captura el enlace de texto
-
-            // Validación de campos obligatorios
-            if (!creador || !parroquia || !tipo || !valoracion || !descripcion || !fotoUrlInput || !regexInternacional.test(telefono)) {
-                formularioBox.classList.add('formulario-error-shaking');
-                setTimeout(() => formularioBox.classList.remove('formulario-error-shaking'), 400);
-                return; 
-            }
-
-            btnSubmitTexto.disabled = true;
-            btnSubmitTexto.textContent = "Guardando en la nube... ⏳";
-
-            // GUARDAMOS DIRECTAMENTE EN FIRESTORE (Servicio 100% Gratis sin tarjeta)
-            db.collection("artesanias").add({
-                creador,
-                parroquia,
-                telefono,
-                tipo,
-                valoracion,
-                descripcion,
-                fotoUrl: fotoUrlInput, // Guardamos la URL que pegó el usuario
-                fechaCreacion: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            .then(() => {
-                alert("¡Éxito total! Tu artesanía ha sido registrada en la nube de Axagua.");
-                formulario.reset();
-                errorTelMsg.textContent = "";
-            })
-            .catch((error) => {
-                console.error("Error en Firestore: ", error);
-                alert("Ocurrió un error al intentar guardar en Cloud Firestore.");
-            })
-            .finally(() => {
-                btnSubmitTexto.disabled = false;
-                btnSubmitTexto.textContent = "Publicar en la Nube";
-            });
-        });
-    }
+     const gridDinamico = document.getElementById('grid-dinamico');
+     const formulario = document.getElementById('form-artesano');
+     const formularioBox = document.getElementById('contenedor-formulario-box');
+    const buscador = document.getElementById('buscador');
+     const panelContadores = document.getElementById('panel-contadores');
+     const inputTelefono = document.getElementById('telefono');
+     const errorTelMsg = document.getElementById('error-tel-msg');
+     const btnTema = document.getElementById('btn-tema');
+     const btnImprimir = document.getElementById('btn-imprimir');
+     const botonesFiltro = document.querySelectorAll('.btn-filtro');
+     const btnSubmitTexto = document.getElementById('btn-submit-texto');
 
     
     
     
     
     
-    
-     //const formularioBox = document.getElementById('contenedor-formulario-box');
-    // const buscador = document.getElementById('buscador');
-     //const panelContadores = document.getElementById('panel-contadores');
-     //const inputTelefono = document.getElementById('telefono');
-     //const errorTelMsg = document.getElementById('error-tel-msg');
-    // const btnTema = document.getElementById('btn-tema');
-     //const btnImprimir = document.getElementById('btn-imprimir');
-     //const botonesFiltro = document.querySelectorAll('.btn-filtro');
-     //const btnSubmitTexto = document.getElementById('btn-submit-texto');
-
+  
     
     
     
-    
-    
-     // 2. LEER DATOS EN TIEMPO REAL DESDE LA NUBE (FIRESTORE)
+    // 2. LEER DATOS EN TIEMPO REAL DESDE LA NUBE (FIRESTORE)
     function escucharBaseDeDatosNube() {
         // Hacemos una escucha activa. Cada cambio en la nube refrescará la web de todos los usuarios
         db.collection("artesanias").onSnapshot((snapshot) => {
